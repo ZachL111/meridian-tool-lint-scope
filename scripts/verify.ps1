@@ -61,3 +61,9 @@ foreach ($pathPattern in $knownPaths) {
 python -m unittest discover -s tests
 
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-meridian-tool-lint-detail.ps1
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-meridian-tool-lint-properties.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-meridian-tool-lint-golden.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
